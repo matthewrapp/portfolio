@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
     res.write('<h1>This is Matthews Portfolio</h1>');
+    res.end();
 })
 
 // application, listen to server
