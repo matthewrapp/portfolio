@@ -6,6 +6,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 // import routes
+const adminRoutes = require('./routes/admin');
+const userRoutes = require('./routes/user');
 
 // import controllers
 
@@ -28,10 +30,14 @@ app.use(bodyParser.urlencoded({
 // static files | path is automatically put into public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req, res, next) => {
-    res.write('<h1>This is Matthews Portfolio</h1>');
-    res.end();
-})
+// app.use((req, res, next) => {
+//     res.write('<h1>This is Matthews Portfolio</h1>');
+//     res.end();
+// })
+
+
+app.use(userRoutes);
+app.use('/admin', adminRoutes);
 
 // application, listen to server
 app.listen(PORT);
